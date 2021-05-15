@@ -11,4 +11,19 @@ From `gdx-collections`:
 > This is useful for those who need high performance collections on the JVM but aren't building an
 > application with LibGDX.
 
+## Building
+
+`ant dist` will generate 
+
+```
+gdx-collections-JP.jar
+gdx-collections-JP-javadoc.jar
+gdx-collections-JP-sources.jar
+```
+
+in the `dist` directory.
+
+Run `ant -p` for other targets.
+
+
 <!-- :maxLineLen=100: -->
