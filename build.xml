@@ -39,6 +39,16 @@
     <jar destfile="${dist.dir}/${ant.project.name}-javadoc.jar" basedir="${javadoc.dir}" duplicate="fail"/>
     <jar destfile="${dist.dir}/${ant.project.name}-sources.jar" basedir="${src.dir}" duplicate="fail"/>
   </target>
+  
+  <target name="copysrc" description="Copy src files from a libgdx Maven -sources jar">
+    <fail unless="gdx.sources.jar">---
+  Set the gdx.sources.jar property to the path to a 'gdx-1.X.X-sources.jar'.
+  (ex. "ant -Dgdx.sources.jar=C:\GDX\gdx-1.9.13-sources.jar copysrc")
+    </fail>
+    <copy todir="${src.dir}" preservelastmodified="true" verbose="true">
+      <zipfileset src="${gdx.sources.jar}" includesfile="src-includes.lst"/> 
+    </copy>
+  </target>
 
   <target name="clean" description="Clean up" >
     <delete dir="${build.dir}"/>
