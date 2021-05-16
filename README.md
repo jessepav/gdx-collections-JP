@@ -1,7 +1,8 @@
 # gdx-collections-JP
 
 A variant of [`gdx-collections`](https://github.com/mini2Dx/gdx-collections) with a simpler build
-system, and a Java 7 target.
+system, and a Java 7 target. Also, this project does not rename packages, but leaves all classes
+in their original `com.badlogic.gdx.*` structure.
 
 From `gdx-collections`:
 
