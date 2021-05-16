@@ -25,5 +25,14 @@ in the `dist` directory.
 
 Run `ant -p` for other targets.
 
+## Updating Collections Classes
+
+`src-includes.lst` contains the relative paths of all the files that we're using from `LibGDX`.
+If any additional files are needed, add them to that file.
+
+Then run `ant -Dgdx.version=<version> copysrc` (where `<version>` is a released LibGDX version
+number, such as `1.9.13`), which will fetch the `gdx-<version>-sources.jar` file from Maven Central
+and copy all the referenced files out of the .jar and into our `src` folder.
+
 
 <!-- :maxLineLen=100: -->

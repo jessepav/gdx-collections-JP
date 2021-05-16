@@ -7,6 +7,7 @@
   <property name="jar.dir" location="${build.dir}/jar"/>
   <property name="javadoc.dir" location="javadoc"/>
   <property name="dist.dir" location="dist"/>
+  <property name="gdxjars.dir" location="gdxjars"/>
   
   <property name="javac.debug" value="true"/>  <!-- may be overridden on the command-line -->
   
@@ -41,10 +42,18 @@
   </target>
   
   <target name="copysrc" description="Copy src files from a libgdx Maven -sources jar">
-    <fail unless="gdx.sources.jar">---
-  Set the gdx.sources.jar property to the path to a 'gdx-1.X.X-sources.jar'.
-  (ex. "ant -Dgdx.sources.jar=C:\GDX\gdx-1.9.13-sources.jar copysrc")
+    <fail unless="gdx.version">---
+
+  Set the gdx.version property to the version of LibGDX whose collection classes you with to use.
+  (ex. "ant -Dgdx.version=1.9.13 copysrc")
     </fail>
+
+    <mkdir dir="${gdxjars.dir}"/>
+    <property name="gdx.sources.url" 
+              value="https://repo1.maven.org/maven2/com/badlogicgames/gdx/gdx/${gdx.version}/gdx-${gdx.version}-sources.jar"/>
+    <property name="gdx.sources.jar" location="${gdxjars.dir}/gdx-${gdx.version}-sources.jar"/>
+    <get src="${gdx.sources.url}" dest="${gdx.sources.jar}" verbose="true" skipexisting="true"/>
+
     <copy todir="${src.dir}" preservelastmodified="true" verbose="true">
       <zipfileset src="${gdx.sources.jar}" includesfile="src-includes.lst"/> 
     </copy>
